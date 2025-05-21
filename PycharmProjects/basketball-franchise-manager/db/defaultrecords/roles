@@ -1,0 +1,13 @@
+INSERT INTO ROLES VALUES (1, 'Manager General', 3);
+INSERT INTO ROLES VALUES (2, 'Propietario', 4);
+INSERT INTO ROLES VALUES (3, 'Entrenador', 5);
+INSERT INTO ROLES VALUES (4, 'Coordinador Ofensivo', 6);
+INSERT INTO ROLES VALUES (5, 'Coordinador Defensivo', 7);
+INSERT INTO ROLES VALUES (6, 'Coordinador Equipos Especiales', 8);
+INSERT INTO ROLES VALUES (7, 'Ojeador', 9);
+INSERT INTO ROLES VALUES (8, 'Fisio', 10);
+INSERT INTO ROLES VALUES (9, 'Entrenador Bateadores', 11);
+INSERT INTO ROLES VALUES (10, 'Entrenador Pitchers', 12);
+INSERT INTO ROLES VALUES (11, 'Entrenador Porteros', 13);
+INSERT INTO ROLES VALUES (12, 'Preparador Fisico', 14);
+INSERT INTO ROLES VALUES (13, 'Asistente', 15);

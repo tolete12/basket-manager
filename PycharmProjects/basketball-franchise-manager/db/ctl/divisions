@@ -1,0 +1,6 @@
+CREATE TABLE "DIVISIONS" (
+	"division_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"translation_id"	INTEGER,
+	"abbrev_id"	INTEGER,
+	"conference_id" INTEGER
+);

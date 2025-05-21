@@ -1,0 +1,6 @@
+CREATE TABLE "CONFERENCES" (
+	"conference_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"translation_id"   INTEGER,
+	"abbrev_id"	INTEGER,
+	"league_id" INTEGER
+);

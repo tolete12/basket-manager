@@ -1,0 +1,154 @@
+<WindowManager>:
+    sm2: sm2
+    nombre: 'algo'
+    StartWindow:
+    Screen:
+        name: 'connect'
+
+        ScreenManager:
+            id: sm2
+            PortfolioOverview:
+            Portfolio:
+            Market:
+            Economics:
+            PortfolioTools:
+
+        MenuFloatLayout:
+
+
+<CustomToggleButton@ToggleButton>:    # dynamic class
+    group: "pmenu"
+    state: "normal" if app.root is None else "down" if app.root.sm2.current == self.text.lower() else "normal"
+
+    background_disabled_down: "atlas://data/images/defaulttheme/button_pressed"
+    disabled_color: 1, 1, 1, 1
+
+    on_state:
+        if self.state == "down": self.disabled = True
+        else: self.disabled = False
+
+    on_release:
+        app.root.sm2.current = self.text.lower()
+
+
+<MenuFloatLayout@FloatLayout>:    # dynamic class
+    Label:
+        text: "Portfolio"
+        markup: True
+        size_hint: 0.5, None
+        height: 30
+        pos_hint:{"top":1, "left":1}
+
+    TextInput:
+        hint_text: "Search"
+        multiline: False
+        size_hint: 0.5, None
+        height: 30
+        pos_hint:{"top":1, "right":1}
+
+    ScrollView:
+        size_hint: None, None
+        do_scroll_y: False
+        do_scroll_x: True
+        size: 500, 150
+
+        GridLayout:
+            rows: 1
+            size_hint_y: None
+
+            CustomToggleButton:
+                text: 'Overview'
+                state: 'down'   # default
+
+            CustomToggleButton:
+                text: root.parent.manager.nombre
+
+            CustomToggleButton:
+                text: 'Market'
+
+            CustomToggleButton:
+                text: 'Economics'
+
+            CustomToggleButton:
+                text: 'Tools'
+
+
+<StartWindow>:
+    name: "start"
+    BoxLayout:
+        canvas:
+            Rectangle:
+                size: self.size
+        color: 1, 1, 1, 0
+        id: login_layout
+        orientation: 'vertical'
+        padding: [10,10,10,10]
+        spacing: 30
+
+        Label:
+            text: 'some text'
+            font_size: 32
+            color: 0, 0, 0, 1
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Label:
+                text: 'Login'
+                font_size: 18
+                halign: 'left'
+                text_size: root.width-20, 20
+                color: 0, 0, 0, 1
+
+            TextInput:
+                id: login
+                multiline:False
+                font_size: 28
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Password'
+                halign: 'left'
+                font_size: 18
+                text_size: root.width-20, 20
+                color: 0, 0, 0, 1
+
+            TextInput:
+                id: password
+                multiline:False
+                password:True
+                font_size: 28
+
+        Button:
+            text: 'Connect'
+            font_size: 24
+            on_release:
+                root.manager.current = 'connect'
+
+
+
+<PortfolioOverview>:
+    name: "overview"
+    Label:
+        text: 'Screen - Overview'
+
+<Portfolio>:
+    name: "portfolio"
+    Label:
+        text: 'Screen - Portfolio'
+
+<Market>:
+    name: "market"
+    Label:
+        text: 'Screen - Market'
+
+<Economics>:
+    name: "economics"
+    Label:
+        text: 'Screen - Economics'
+
+<PortfolioTools>:
+    name: "tools"
+    Label:
+        text: 'Screen - Portfolio Tools'

@@ -1,0 +1,21 @@
+CREATE TABLE "LEAGUES" (
+	"league_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"translation_id"	INTEGER,
+	"abbrev_id"     INTEGER,
+	"sport_id"	INTEGER,
+	"country_id"	INTEGER,
+	"league_type_id"	INTEGER,
+	"popularity" INTEGER,
+	"pro" INTEGER,
+	"level" INTEGER,
+	"draft_rounds" INTEGER,
+	"active_roster" INTEGER,
+	"two_way" INTEGER INTEGER,
+	"practice_squad" INTEGER,
+	"expanded_roster" INTEGER,
+	"major_contracts" INTEGER,
+	"dress_players" INTEGER,
+	"game_types_id" INTEGER,
+	"preseason" INTEGER,
+	"gender" INTEGER
+);

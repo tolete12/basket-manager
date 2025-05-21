@@ -1,0 +1,5 @@
+CREATE TABLE "ROLES" (
+	"role_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"name" TEXT,
+	"translation_id" INTEGER
+);

@@ -1,0 +1,6 @@
+CREATE TABLE "STADIUMS" (
+	"stadium_id"	INTEGER,
+	"name"	TEXT,
+	"capacity" INTEGER,
+	"year_opened" INTEGER
+);

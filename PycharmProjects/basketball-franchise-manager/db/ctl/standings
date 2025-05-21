@@ -1,0 +1,16 @@
+CREATE TABLE "STANDINGS" (
+	"standings_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"league_id"	INTEGER,
+	"conference_id"	INTEGER,
+	"division_id"	INTEGER,
+	"team_id"	INTEGER,
+	"wins" INTEGER,
+	"loses" INTEGER,
+	"draws" INTEGER,
+	"points_scored" INTEGER,
+	"points_against" INTEGER,
+	"winning_percentage" INTEGER,
+	"season_id" INTEGER,
+	"week_id" INTEGER,
+	"is_last" INTEGER
+	)

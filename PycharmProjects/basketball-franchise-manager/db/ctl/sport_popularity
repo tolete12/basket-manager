@@ -1,0 +1,5 @@
+CREATE TABLE "SPORTS_POPULARITY" (
+	"sport_id"	INTEGER NOT NULL,
+	"country_id"	INTEGER NOT NULL,
+	"popularity"	INTEGER
+);

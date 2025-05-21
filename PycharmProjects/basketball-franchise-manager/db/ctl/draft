@@ -1,0 +1,11 @@
+CREATE TABLE "DRAFT" (
+	"draft_id"	INTEGER,
+	"team_id"	INTEGER,
+	"round"	INTEGER,
+	"pick"	INTEGER,
+	"player_id"	INTEGER,
+	"season_id"	INTEGER,
+	"min_protected"	INTEGER,
+	"max_protected"	INTEGER,
+	"season_id_non_protected"	INTEGER
+);

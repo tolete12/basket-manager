@@ -1,0 +1,5 @@
+CREATE TABLE "OFFER_TYPES" (
+	"offer_type_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"translation_id"	INTEGER,
+	"abbrev_id"	INTEGER
+);

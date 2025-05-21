@@ -1,0 +1,10 @@
+CREATE TABLE "DATES" (
+	"date_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"date"	TEXT,
+	"day"	INTEGER,
+	"month"	INTEGER,
+	"year"	INTEGER,
+	"half"	INTEGER,
+	"quarter"	INTEGER,
+	"week" INTEGER
+);

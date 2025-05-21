@@ -1,0 +1,44 @@
+#:import CardTransition kivy.uix.screenmanager.CardTransition
+
+WinManager:
+    transition: CardTransition()
+    MainWindow:
+    AdminPanel:
+
+<MainWindow>:
+    name: "loginPanel"
+    nickname: nicknameID
+    password: passwordID
+    key: keyID
+    GridLayout:
+        rows: 2
+        GridLayout:
+            cols: 2
+            Label:
+                text: "Nickname: "
+            TextInput:
+                id: nicknameID
+                multiline: False
+            Label:
+                text: "Password: "
+            TextInput:
+                id: passwordID
+                multiline: False
+            Label:
+                text: "Key: "
+            TextInput:
+                id: keyID
+                multiline: False
+        Button:
+            text: "Log in"
+            on_release:
+                app.root.current = "adminPanel"
+                root.manager.transition.direction = "up"
+
+<adminPanel>:
+    name: "adminPanel"
+    Button:
+        text: "Back"
+        on_release:
+            app.root.current = "loginPanel"
+            root.manager.transition.direction = "down"

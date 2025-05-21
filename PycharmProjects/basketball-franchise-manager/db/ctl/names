@@ -1,0 +1,6 @@
+CREATE TABLE "NAMES" (
+	"name_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"name"	TEXT,
+	"country_id"	INTEGER,
+	"odds"	INTEGER
+);

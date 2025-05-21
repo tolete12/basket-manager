@@ -1,0 +1,7 @@
+CREATE TABLE "STATS" (
+	"stat_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"schedule_id"	INTEGER,
+	"player_id"	INTEGER,
+	"category_stat_id"	INTEGER,
+	"quantity"	INTEGER
+);

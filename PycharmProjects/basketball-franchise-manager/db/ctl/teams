@@ -1,0 +1,10 @@
+CREATE TABLE "TEAMS" (
+	"team_id"	INTEGER,
+	"name"	TEXT,
+	"division_id" INTEGER,
+	"popularity" INTEGER,
+	"foundation_year" INTEGER,
+	"stadium_id" INTEGER,
+	"preseason_division_id" INTEGER,
+	"level" INTEGER
+);

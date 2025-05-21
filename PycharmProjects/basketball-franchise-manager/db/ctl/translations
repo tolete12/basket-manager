@@ -1,0 +1,5 @@
+CREATE TABLE "TRANSLATIONS" (
+	"translation_id"	INTEGER,
+	"language_id"	INTEGER,
+	"text"	TEXT
+);

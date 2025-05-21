@@ -1,0 +1,8 @@
+CREATE TABLE "POSITIONS" (
+	"position_id"	INTEGER,
+	"translation_id" INTEGER,
+	"sport_id" INTEGER,
+	"abbrev_id" INTEGER,
+	"order" INTEGER,
+	"offense" INTEGER
+);

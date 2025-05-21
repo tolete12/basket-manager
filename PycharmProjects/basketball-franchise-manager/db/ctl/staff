@@ -1,0 +1,28 @@
+CREATE TABLE "STAFF" (
+	"staff_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"name_id"	INTEGER,
+	"surname_id"	INTEGER,
+	"contract_id" INTEGER,
+	"job_security"	INTEGER,
+	"team_id" INTEGER,
+	"role_id" INTEGER,
+
+	"offense" INTEGER,
+	"defense" INTEGER,
+	"batting" INTEGER,
+	"pitchers" INTEGER,
+	"spetial_teams" INTEGER,
+	"goalies" INTEGER,
+	"scout_current" INTEGER,
+	"scout_potential" INTEGER,
+	"physical" INTEGER,
+	"physio" INTEGER,
+	"tactics" INTEGER,
+	"technique" INTEGER,
+
+	"intelligence" INTEGER,
+	"discipline" INTEGER,
+	"motivation" INTEGER,
+	"gm_aggressive" INTEGER
+
+);

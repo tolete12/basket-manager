@@ -1,0 +1,14 @@
+CREATE TABLE "SCHEDULES" (
+	"schedule_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"team_id_1"	INTEGER,
+	"team_id_2"	INTEGER,
+	"stadium_id"	INTEGER,
+	"score_1"	INTEGER,
+	"score_2"	INTEGER,
+	"date_id"	INTEGER,
+	"game_time" TEXT,
+	"temperature"	INTEGER,
+	"weather_id"	INTEGER,
+	"game_type_id"	INTEGER,
+	"season_id"	INTEGER
+);

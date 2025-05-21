@@ -1,0 +1,99 @@
+########################################################################
+## MAIN SCREEN
+########################################################################\
+#: import parentDir variables.paths.parentDir
+#: import iconsPicsDir variables.paths.iconsPicsDir
+#: import GAME_NAME variables.constants.GAME_NAME
+#: import get_translation utilities.utilities
+#: import get_separator utilities.utilities
+#: import RoundedButton utilities.kv_utilities.RoundedButton
+#: import LayoutGradient utilities.kv_utilities.LayoutGradient
+#: include kv/utilities.kv
+#: import FitImage kivymd.uix.fitimage.FitImage
+
+<MainMenu>:
+    id: main_menu
+    name: 'MainMenu'
+    text: app.update_objects()
+    FitImage:
+        source: parentDir + '/resources/backgrounds/backmain.png'
+    GridLayout:
+        rows: 3
+        padding: 0
+        spacing: 0
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.1  #width, height
+
+            Label:
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+                text: 'Hello [b][u][ref=world]World[/ref][/u][/b]'
+                on_ref_press:app.my_popup.show_popup(**{'text': 'label', 'title': 'title'})
+                markup: True
+
+        BoxLayout:
+            orientation: "vertical"
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint: 0.3, 1
+                spacing: 20
+                anchor_y: 'top'
+                anchor_x: 'center'
+                RoundedButton:
+                    id: play_game
+                    text: Utilities.get_translation(app.translations, 22, app.language_id)
+                    size_hint: 0.6, 0.15
+                RoundedButton:
+                    id: playoffs
+                    text: Utilities.get_translation(app.translations, 23, app.language_id)
+                    size_hint: 0.6, 0.15
+
+                RoundedButton:
+                    id: new_career
+                    size_hint: 0.6, 0.15
+                    on_release: root.load_new_career("NewCareer", *args)
+                    StackLayout:
+                        pos: self.parent.pos
+                        size: self.parent.size
+                        orientation: 'lr-tb'
+                        Image:
+                            source: iconsPicsDir + Utilities().get_separator() + 'new_game.png'
+                            size_hint_x: None
+                            pos_hint: {'center_x': 0.4, 'center_y': 0.6}
+                        Label:
+                            size_hint_x: None
+                            width: 100
+                            text: Utilities.get_translation(app.translations, 1, app.language_id)
+
+
+                RoundedButton:
+                    id: load_career
+                    text: Utilities.get_translation(app.translations, 2, app.language_id)
+                    size_hint: 0.6, 0.15
+                    on_release: app.root.current='LoadGame'
+                RoundedButton:
+                    id: continue_career
+                    text: Utilities.get_translation(app.translations, 238, app.language_id)
+                    size_hint: 0.6, 0.15
+                RoundedButton:
+                    id: editor
+                    text: Utilities.get_translation(app.translations, 24, app.language_id)
+                    size_hint: 0.6, 0.15
+                RoundedButton:
+                    id: settings
+                    text: Utilities.get_translation(app.translations, 25, app.language_id)
+                    on_release: app.my_popup.show_popup(**{'text': 'press', 'title': 'title'})
+                    size_hint: 0.6, 0.15
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, 0.3  #width, height
+            Label :
+                size_hint_x: 0.7
+                text: "foo"
+
+            Label :
+                size_hint_x: 0.3
+                text: "foo"

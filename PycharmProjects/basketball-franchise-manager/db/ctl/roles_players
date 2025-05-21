@@ -1,0 +1,6 @@
+CREATE TABLE "ROLES_PLAYERS" (
+	"role_player_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"sport_id" INTEGER,
+	"name" TEXT,
+	"translation_id" INTEGER
+);

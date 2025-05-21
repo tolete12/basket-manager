@@ -1,0 +1,6 @@
+CREATE TABLE "SURNAMES" (
+	"surname_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"surname"	TEXT,
+	"country_id"	INTEGER,
+	"odds"	INTEGER
+);

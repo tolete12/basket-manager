@@ -1,0 +1,49 @@
+########################################################################
+## LOAD GAME
+########################################################################\
+#: import OneLineListItemAligned utilities.kv_utilities.OneLineListItemAligned
+#: import Utilities utilities.utilities.Utilities
+#: import parentDir variables.paths.parentDir
+#: import random random
+#: import get_translation utilities.utilities
+
+
+<LoadGame>:
+    id: load_game
+    name: 'LoadGame'
+    files_len: len(Utilities().list_files(parentDir, "py"))
+    Image:
+        orientation: 'vertical'
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: parentDir + '/resources/backgrounds/court.png'
+    BoxLayout:
+        # Set box position
+        orientation: 'vertical'
+        size_hint: 0.6, 0.6
+        pos_hint:{'center_y':0.5, 'center_x':0.5}
+        ScrollView:
+            bar_width: 10
+            bar_color: 1, 0, 0, 1   # red
+            bar_inactive_color: 0, 0, 1, 1   # blue
+            effect_cls: "ScrollEffect"
+            scroll_type: ['bars']
+            size_hint: 1, 1
+            MDList:
+                canvas.before:
+                    Color:
+                        rgba: 0, 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                on_parent:
+                    for i in range(0, root.files_len): self.add_widget(OneLineListItemAligned(id=Utilities().list_files(
+                    parentDir, "py")[i], on_press=lambda x: app.my_popup.show_popup(**{'text': Utilities().list_files(parentDir, "py")[i], 'title': 'title'}), text=Utilities().list_files(parentDir, "py")[i], halign='center',
+                    bg_color=colormap['white'] if not i % 2 == 1 else colormap['lightblue']))
+        MyButton:
+            id: back_but
+            text: Utilities.get_translation(app.translations, 232, app.language_id)
+            background_color: colormap['blueviolet']
+            on_release: app.root.current='MainMenu'

@@ -1,0 +1,6 @@
+CREATE TABLE "CATEGORIES_STATS" (
+	"category_stat_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"name"	TEXT,
+	"abbrev"	TEXT,
+	"translation_id" INTEGER
+);

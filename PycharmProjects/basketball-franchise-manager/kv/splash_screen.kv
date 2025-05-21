@@ -1,0 +1,52 @@
+########################################################################
+## SPLASH SCREEN
+########################################################################
+<SplashScreen>:
+    # Set sc screen name
+    id: splash_screen
+    name: "SplashScreen"
+    # Start the progress bar animation when the screen is active
+    on_enter: self.ids.progress.start()
+    MDBoxLayout:
+        # Add float layout
+        canvas:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle: #woohoo!!!
+                size: self.size
+                pos: self.pos
+        MDFloatLayout:
+            # Add Gif image
+            Image:
+                source:'resources/backgrounds/american-sports.png'
+                allow_stretch: True
+                anim_delay: 0
+                # anim_loop: 1
+                anim_reset: True
+                size_hint_y: .7
+                pos_hint: {'left':0.9, 'top':0.9}
+
+            # Add box layout
+            BoxLayout:
+                # Set box position
+                pos_hint:{'center_y':.15, 'center_x':.5}
+                padding: "10dp"
+                # set width to 70%
+                size_hint_x: .7
+                size_hint_y: .3
+
+                # Add progress bar
+                MDProgressBar:
+                    # Set progress id
+                    id: progress
+                    # Set orientation
+                    orientation: "horizontal"
+                    # Set progress type
+                    type: "indeterminate"
+                    # Progress duration
+                    running_duration: 1
+                    # Catching duration
+                    catching_duration: 1
+                    size_hint_x: .9
+                    size_hint_y: .1
+                    pos_hint:{'center_y':.15, 'center_x':.5}

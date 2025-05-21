@@ -1,0 +1,6 @@
+CREATE TABLE "PLAYERS_POSITIONS" (
+	"player_position_id"	INTEGER,
+	"player_id"	INTEGER,
+	"position_id"	INTEGER,
+	"rating" INTEGER
+);

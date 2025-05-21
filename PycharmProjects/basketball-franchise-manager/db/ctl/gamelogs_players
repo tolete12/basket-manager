@@ -1,0 +1,5 @@
+CREATE TABLE "GAMELOGS_PLAYERS" (
+	"gamelog_players_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"player_id" INTEGER,
+    "is_offense" INTEGER
+);

@@ -1,0 +1,7 @@
+CREATE TABLE "GAMEPLAYERS" (
+	"gameplayer_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"name"	TEXT,
+	"surname"	TEXT,
+	"birthdate"	INTEGER,
+	"country_id"	INTEGER
+);

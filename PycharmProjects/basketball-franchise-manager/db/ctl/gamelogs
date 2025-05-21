@@ -1,0 +1,10 @@
+CREATE TABLE "GAMELOGS" (
+	"gamelog_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"schedule_id" INTEGER,
+    "minute" TEXT,
+    "offensive_team_id" INTEGER,
+    "defensive_team_id" INTEGER,
+    "score" TEXT,
+    "text" TEXT,
+    "translation_id" INTEGER
+);

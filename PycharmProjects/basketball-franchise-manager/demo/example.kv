@@ -1,0 +1,24 @@
+ScreenManager:
+    LoginPage:
+    ClientsTable:
+
+
+<LoginPage>:
+    username: User
+    password: Pass
+    MDTextField:
+        id: User
+        hint_text: "Username"
+        size_hint: 0.5, 0.09
+        pos_hint: {"center_x": 0.5, "center_y": 0.7}
+    MDTextField:
+        id: Pass
+        hint_text: "Password"
+        size_hint: 0.5, 0.09
+        pos_hint: {"center_x": 0.5, "center_y": 0.6}
+    MDFillRoundFlatButton:
+        text: "Login"
+        size_hint: 0.5, 0.06
+        pos_hint: {"center_x": 0.5, "center_y": 0.4}
+        on_release:
+            root.validate_user()

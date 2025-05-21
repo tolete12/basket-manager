@@ -1,0 +1,6 @@
+CREATE TABLE "SHORTLIST" (
+	"shortlist_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"player_id"	INTEGER,
+	"staff_id"	INTEGER,
+	"game_player_id"	INTEGER
+);

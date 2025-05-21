@@ -1,0 +1,5 @@
+CREATE TABLE "COUNTRIES" (
+	"country_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"translation_id"	INTEGER,
+	"population"	INTEGER
+);

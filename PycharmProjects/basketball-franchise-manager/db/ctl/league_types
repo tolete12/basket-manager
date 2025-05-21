@@ -1,0 +1,5 @@
+CREATE TABLE "LEAGUE_TYPES" (
+	"league_type_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	"name"	TEXT,
+	"translation_id" INTEGER
+);

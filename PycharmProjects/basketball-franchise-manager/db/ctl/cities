@@ -1,0 +1,6 @@
+CREATE TABLE "CITIES" (
+	"city_id"	INTEGER,
+	"name"	TEXT,
+	"population" INTEGER,
+	"country_id" INTEGER
+);
