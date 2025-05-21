@@ -1,73 +1,33 @@
-#!/usr/bin/env python3
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
 
-import fnmatch
-import os
+import setuptools
 
-from setuptools import setup
-from setuptools.command.install import install
+long_description = open('README.rst', 'rb').read().decode('utf-8')
 
+install_requires = ["requests<=2.21.0", "beautifulsoup4<=4.7.1", "PyQt5==5.14.0"]
 
-def build_translations():
-    from tuxemon.core.locale import T
-
-    T.collect_languages()
-
-
-class InstallAndBuildTranslations(install):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # build_translations()
-
-
-# Find all the python modules
-modules = []
-matches = []
-for root, dirnames, filenames in os.walk('tuxemon'):
-    for filename in fnmatch.filter(filenames, '__init__.py'):
-        matches.append(os.path.join(root, filename))
-
-for match in matches:
-    match = match.replace(os.sep + "__init__.py", "")
-    match = match.replace(os.sep, ".")
-    modules.append(match)
-
-# Get the version from the README file.
-with open("README.md", "r") as f:
-    VERSION = f.readline().split(" ")[-1].replace("\n", "")
-
-# Get the dependencies from requirements.text
-with open("requirements.txt", "r") as f:
-    REQUIREMENTS = f.read().splitlines()
-
-# Configure the setuptools
-setup(name='tuxemon',
-      version=VERSION,
-      description='Open source monster-fighting RPG',
-      author='William Edwards',
-      author_email='shadowapex@gmail.com',
-      maintainer='Tuxemon',
-      maintainer_email='info@tuxemon.org',
-      url='https://www.tuxemon.org',
-      include_package_data=True,
-      packages=modules,
-      license="GPLv3",
-      long_description='https://github.com/Tuxemon/Tuxemon',
-      install_requires=REQUIREMENTS,
-      python_requires='>=3.6',
-      entry_points={
-          'gui_scripts': [
-              'tuxemon = tuxemon.__main__:main'
-          ]
-      },
-      classifiers=[
-          "Intended Audience :: End Users/Desktop",
-          "Development Status :: 3 - Alpha",
-          "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-          "Programming Language :: Python :: 3.8",
-          "Programming Language :: Python :: 3.9",
-          "Programming Language :: Python :: 3.10",
-          "Topic :: Games/Entertainment",
-          "Topic :: Games/Entertainment :: Role-Playing",
-      ],
-      cmdclass={'install': InstallAndBuildTranslations}
-      )
+setuptools.setup(
+    name="AmericanSportsManager",
+    version="0.0.1",
+    url="https://github.com/pablorasines/AmericanSportsManager",
+    download_url="https://github.com/pablorasines/AmericanSportsManager.git",
+    author="pablorasines",
+    author_email="pablo.rasines.diez@gmail.com",
+    description="American Sports Manager",
+    packages=["bin", "db", "gui", "models", "resources", "utilities", "variables"],
+    install_requires=install_requires,
+    license='MIT License',
+    include_package_data=True,
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+    ],
+    python_requires='>=3.8',
+)
