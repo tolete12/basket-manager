@@ -12,9 +12,6 @@ from utilities import Utilities
 from utilities.utilities_gui import UtilitiesGui
 from variables.constants import BACKGROUND_SPORTS, BACKGROUND_PARQUE, INI_DB, GAME_NAME
 from variables.paths import backgroundsPicsDir
-from tkinter import NW
-import tkinter.font as font
-from tkinter.messagebox import askyesno
 
 
 class MainMenu(main_class.MainClass):

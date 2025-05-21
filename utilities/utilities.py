@@ -4,7 +4,6 @@ import configparser
 import datetime
 import sys
 from datetime import date
-from tkinter import Tk, messagebox
 import statsapi
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.image import Image
@@ -322,8 +321,16 @@ class Utilities:
 
     @staticmethod
     def get_screen_window_size():
-        from PIL import ImageGrab
-        return ImageGrab.grab().size
+        """Get the screen size in a cross-platform way."""
+        try:
+            # Try using ImageGrab first (works on Windows and macOS)
+            import PIL.ImageGrab
+            return PIL.ImageGrab.grab().size
+        except (ImportError, OSError):
+            # Fall back to screeninfo for Linux
+            from screeninfo import get_monitors
+            monitor = get_monitors()[0]  # Primary monitor
+            return (monitor.width, monitor.height)
 
     @staticmethod
     def position_center_window(width_window, height_window):

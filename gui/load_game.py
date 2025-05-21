@@ -1,11 +1,9 @@
-from tkinter import END, messagebox
 import gui.main_class as main_class
 from db.sql_lite_handler import SQLiteHandler
 from db.sql_lite_helper import SQLLiteHelper
 from utilities.utilities_gui import UtilitiesGui
 from variables.constants import BACKGROUND_PARQUE, INI_DB
 from variables.paths import backgroundsPicsDir, parentDir
-import tkinter.font as font
 
 
 class LoadGame(main_class.MainClass):

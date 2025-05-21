@@ -5,7 +5,6 @@ from utilities.utilities_gui import UtilitiesGui
 from variables.constants import BACKGROUND_PARQUE, INI_DB, SPORTS_TABLE, SPORTS_ID, LEAGUES_ID, LEAGUES_TABLE, \
     CONFERENCES_ID, CONFERENCES_TABLE, DIVISIONS_ID, DIVISIONS_TABLE, TEAM_ID, TEAM_NAME, TEAMS_TABLE, TEAM_LOGO
 from variables.paths import backgroundsPicsDir, teamsPicsDir
-from tkinter import font, Label, messagebox
 
 
 class NewCareer(main_class.MainClass):
