@@ -11,3 +11,5 @@ kivymd_extensions.akivymd
 buildozer
 pyperclip
 screeninfo
+psutil
+appkit

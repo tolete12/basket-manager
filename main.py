@@ -12,7 +12,7 @@ import datetime
 from kivy.clock import Clock
 from kivy.properties import DictProperty
 from kivy.uix.screenmanager import ScreenManager, FadeTransition, NoTransition
-
+from kivy.utils import platform
 from db.createrecords.calendars.create_nba_calendar import CreateNBACalendar
 import gui.main_class as main_class
 from db.initial_database_handler import InitialDatabaseHandler
@@ -21,16 +21,17 @@ from variables.constants import GAME_NAME, INI_DB
 from kivy.config import Config
 from utilities import Utilities
 from utilities.kv_utilities import MyPopUp
+from kivy.uix.button import Button
 
-width = 1440
-height = 800
-pos_x, pos_y = Utilities().position_center_window(width, height)
+
 Config.set('graphics', 'resizable', True)
 Config.set('input', 'mouse', 'mouse,disable_multitouch')
 from kivy.core.window import Window
 from kivymd.app import MDApp
 
-Window.size = (int(width), int(height))
+
+class MyButton(Button):
+    pass
 
 class Manager(ScreenManager):
     def __init__(self, **kwargs):
@@ -57,19 +58,45 @@ class MainApp(MDApp, main_class.MainClass):
         self.update_translations_obj()
         self.update_popup_obj()
 
-    def start_init_actions(self):
-        rows, override = Utilities.test_record(1)
-        override = True
+    def on_start(self):
+        # Delay time for splash screen before transitioning to main screen
+        super().on_start()
+        Clock.schedule_once(self.change_screen, 6)  # Delay for 10 seconds
+    
+    def center_window(width:int=800, height:int=600):
+        # Get screen resolution
+        import os
+        try:
+            from screeninfo import get_monitors
+            monitor = get_monitors()[0]
+            screen_width = monitor.width
+            screen_height = monitor.height
+        except ImportError:
+            # Fallback: use environment variables (less accurate)
+            screen_width = 1920
+            screen_height = 1080
 
+        if not isinstance(width, int):
+            width = 0  # Default if not an integer
+        if not isinstance(height, int):
+            height = 600  # Default if not an integer
+        # Set window size
+        Window.size = (screen_width, screen_height-300)
+
+        Window.maximize()
+
+    def start_init_actions(self):
+        override = True
         save_game = False
         super().connect_db(INI_DB, override, save_game)
-
         initial_db_handler = InitialDatabaseHandler(self.db_obj, self.utilities, self.sql_helper)
         self.utilities.set_default_config()
         if override:
             initial_db_handler.create_tables()
             initial_db_handler.insert_default_records(1900, datetime.date.today().year + 1)
             self.create_records()
+        # Call update_objects when the app starts
+        self.update_objects()
 
     def create_records(self):
         season_info = self.sql_helper.get_latest_seasons_info()[1]
@@ -78,14 +105,6 @@ class MainApp(MDApp, main_class.MainClass):
         calendar.assign_season_generic_games(1, season_info)
         print("calendar ok")
         
-        
-
-    @staticmethod
-    def window_size():
-        Window.size_hint_y = None
-        Window.top = 0
-        Window.left = pos_x
-
     def build(self):
         # Set App Title
         self.title = GAME_NAME
@@ -95,13 +114,13 @@ class MainApp(MDApp, main_class.MainClass):
 
         self.screen_manager = Manager(transition=NoTransition(duration=0.25))
         self.screen_manager.add_widget(SplashScreen())
-        self.window_size()
         self.start_init_actions()
 
         self.load_widgets()
 
         print("ok")
         # Return screen manager
+        Clock.schedule_once(self.center_window, 0)
         return self.screen_manager
 
     def load_widgets(self):
@@ -125,11 +144,6 @@ class MainApp(MDApp, main_class.MainClass):
                     my_class = getattr(module, key)
                     my_instance = my_class()
                     self.screen_manager.add_widget(my_instance)
-
-    def on_start(self):
-        # Delay time for splash screen before transitioning to main screen
-        super().on_start()
-        Clock.schedule_once(self.change_screen, 6)  # Delay for 10 seconds
 
     def change_screen(self, dt):
         self.screen_manager.current = "MainMenu"

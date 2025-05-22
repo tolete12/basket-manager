@@ -40,7 +40,7 @@ class Utilities:
                 'utilities': app.utilities
                 }
 
-    def get_separator(self):
+    def get_separator(self) -> str:
         return '\\' if self.is_windows_os() else '/'
 
     def get_columns_from_ctl(self, table: str):
@@ -252,9 +252,8 @@ class Utilities:
     def say_hello():
         messagebox.showinfo("Say Hello", "Hello World")
 
-    @staticmethod
-    def test_record(option):
-        db_obj = SQLiteHandler(INI_DB, override=False, save_game=False)
+    def test_record(self, option):
+        db_obj = SQLiteHandler(INI_DB, override=False, save_game=False, sep=self.get_separator())
         sql = "SELECT name FROM sqlite_master WHERE type='table' AND name='TRANSLATIONS';"
         rows = db_obj.read_records(sql)[0]
 

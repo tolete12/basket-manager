@@ -15,7 +15,7 @@ class MainClass:
         self.size_x, self.size_y = UtilitiesGui.get_screen_size()
 
     def connect_db(self, db: str, override: bool, save_game: bool):
-        self.db_obj = SQLiteHandler(db, override=override, save_game=save_game)
+        self.db_obj = SQLiteHandler(db, override=override, save_game=save_game, sep=Utilities().get_separator())
         self.sql_helper = SQLLiteHelper(self.db_obj)
 
     def close_db(self):
